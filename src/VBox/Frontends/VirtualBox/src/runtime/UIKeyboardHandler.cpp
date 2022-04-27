@@ -341,6 +341,16 @@ void UIKeyboardHandler::releaseKeyboard()
         return;
     }
 
+    CVirtualBox vbox = uiCommon().virtualBox();
+    QVector<CMachine> machines = vbox.GetMachines();
+    QVectorIterator<CMachine> it(machines);
+
+    while (it.hasNext()) {
+        CMachine machine = it.next();
+        machine.SetGuestPropertyValue("release_keyboard", "true");
+        LogRel(("GUI: Keyboard released. Set 'release_keyboard' property to true."));
+    }
+
     /* If the view exists: */
     if (m_views.contains(m_iKeyboardCaptureViewIndex))
     {
@@ -394,6 +404,8 @@ void UIKeyboardHandler::releaseKeyboard()
 
         /* Notify all the listeners: */
         emit sigStateChange(state());
+
+        /* Send signal to the guest machine through socket */
     }
 }
 
