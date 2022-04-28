@@ -725,9 +725,9 @@ VBOX_WITH_LIBOPUS = 1
 # Enable SEE (+ AVX) optimizations for Opus.
 VBOX_WITH_OPUS_SSE = 1
 # Enable shared folders
-VBOX_WITH_SHARED_FOLDERS = 1
+# VBOX_WITH_SHARED_FOLDERS = 1
 # Enable shared clipboard
-VBOX_WITH_SHARED_CLIPBOARD = 1
+# VBOX_WITH_SHARED_CLIPBOARD = 1
 # Enable shared clipboard (file) transfers
 #if1of ($(KBUILD_TARGET), win linux)
 # VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS = 1
@@ -748,16 +748,16 @@ VBOX_WITH_MEMBALLOON = 1
 VBOX_WITH_LIBCURL = 1
 # Enable Host=>Guest Drag'n'Drop
 if1of ($(KBUILD_TARGET), darwin linux solaris win)
- VBOX_WITH_DRAG_AND_DROP = 1
+# VBOX_WITH_DRAG_AND_DROP = 1
  if1of ($(KBUILD_TARGET), darwin linux solaris win)
-  VBOX_WITH_DRAG_AND_DROP_GH = $(VBOX_WITH_DRAG_AND_DROP)
+ # VBOX_WITH_DRAG_AND_DROP_GH = $(VBOX_WITH_DRAG_AND_DROP)
  endif
  ifdef VBOX_WITH_DRAG_AND_DROP_GH
   ifeq ($(KBUILD_TARGET),darwin)
    # On OS X (Darwin) this needs to be set in order to get proper
    # guest->host support.
    # Note: Setting this requires Qt also having this feature enabled!
-   VBOX_WITH_DRAG_AND_DROP_PROMISES = $(VBOX_WITH_DRAG_AND_DROP)
+  # VBOX_WITH_DRAG_AND_DROP_PROMISES = $(VBOX_WITH_DRAG_AND_DROP)
   endif
  endif
 endif
